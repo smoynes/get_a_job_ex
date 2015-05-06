@@ -7,6 +7,8 @@ Hypermedia APIs* by Steve Klabnik.
 The application uses the [Phoenix](https://phoenixframework.org) to
 implement the API.
 
+This is a work in progress and not complete.
+
 Development
 -----------
 
