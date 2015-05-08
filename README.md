@@ -12,6 +12,21 @@ This is a work in progress and not complete.
 Development
 -----------
 
+Requirements:
+
+- postgresql: server and client
+- Erlang/OTP 17
+- Elixir 1.0.4
+
+I've built a vagrant environment that has everything you need:
+
+```
+$ vagrant up
+$ vagrant ssh
+```
+
+The source code is available in the VM at `/vagrant`.
+
 To start your new Phoenix application:
 
 1. Install dependencies with `mix deps.get`
