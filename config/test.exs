@@ -12,8 +12,9 @@ config :logger, level: :warn
 # Configure your database
 config :get_a_job_ex, GetAJobEx.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "get_a_job",
+  hostname: "127.0.0.1",
+  password: "password",
   database: "get_a_job_ex_test",
   size: 1,
   max_overflow: 0
