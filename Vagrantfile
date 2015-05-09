@@ -8,7 +8,7 @@ set -e
 
 hostname wakesiah-dev
 
-echo "#{timezone}" | tee /etc/timezone && \
+echo "#{timezone}" > /etc/timezone && \
   dpkg-reconfigure --frontend noninteractive tzdata
 
 echo "Installing erlang vendor repo"
@@ -21,25 +21,26 @@ echo "Installing nodejs vendor repo"
 apt-add-repository -y ppa:chris-lea/node.js
 
 echo "Updating apt cache"
-apt-get -qq update
+apt-get update -q -y
 
 echo "Upgrading packages"
-apt-get -qq upgrade
+apt-get upgrade -q -y
 
 echo "Installing build tools"
-apt-get -qq install build-essential curl git-core pkg-config zip
+apt-get install -q -y build-essential curl git-core pkg-config zip
 
 echo "Installing erlang"
-apt-get -qq install esl-erlang erlang-manpages elixir
+apt-get install -q -y esl-erlang erlang-manpages elixir
 
 echo "Installing postgres"
-apt-get -qq install postgresql-9.3 postgresql-client-9.3
+apt-get install -q -y postgresql-9.3 postgresql-client-9.3
 
 echo "Installing nodejs"
-apt-get install -qq nodejs
+apt-get install -q -y nodejs
 
 sudo -u postgres psql -c \
-  "CREATE ROLE get_a_job WITH CREATEROLE CREATEDB LOGIN PASSWORD 'password';"
+  "CREATE ROLE get_a_job WITH CREATEROLE CREATEDB LOGIN \
+   PASSWORD 'password';" || true
 
 ### TODO: set PGUSER and PGHOSTNAME env vars
 
