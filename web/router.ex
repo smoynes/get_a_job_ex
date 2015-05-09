@@ -18,8 +18,9 @@ defmodule GetAJobEx.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", GetAJobEx do
-  #   pipe_through :api
-  # end
+  scope "/api", GetAJobEx do
+    pipe_through :api
+
+    resources "/jobs", JobController
+  end
 end

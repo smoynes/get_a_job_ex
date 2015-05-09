@@ -30,10 +30,34 @@ The source code is available in the VM at `/vagrant`.
 To run the application in development mode.
 
 1. Install dependencies:
-  ```shell
-  $ mix do local.hex --force , local.rebar --force, deps.get
-  ```
-2. Start Phoenix endpoint with `mix phoenix.server`
+
+    ```
+    $ mix local.hex --force
+    $ mix local.rebar --force
+    $ mix deps.get
+    $ npm install
+    ```
+
+    Or, equivalently:
+
+    ```
+    $ mix do local.hex --force, local.rebar --force, deps.get && npm install
+    ```
+
+1. Create the databases:
+
+    ```
+    $ mix ecto.create
+    $ mix ecto.migrate
+    ```
+
+    Or, equivalently:
+
+    ```
+    $ mix do ecto.create, ecto.migrate
+    ```
+
+1. Start Phoenix endpoint with `mix phoenix.server`
 
 Now you can visit `http://localhost:4000` from your browser.
 
