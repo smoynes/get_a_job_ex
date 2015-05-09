@@ -1,9 +1,15 @@
 VAGRANTFILE_API_VERSION = "2"
 
+require 'time'
+timezone = Time.now.zone
+
 $script = <<SCRIPT
 set -e
 
 hostname wakesiah-dev
+
+echo "#{timezone}" | tee /etc/timezone && \
+  dpkg-reconfigure --frontend noninteractive tzdata
 
 echo "Installing erlang vendor repo"
 apt-add-repository -y \
