@@ -1,15 +1,16 @@
 VAGRANTFILE_API_VERSION = "2"
 
 require 'time'
-timezone = Time.now.zone
+offset = Time.now.gmt_offset / 60 / 60
+timezone = "Etc/GMT#{sprintf('%+d', -offset)}"
 
 $script = <<SCRIPT
 set -e
 
 hostname wakesiah-dev
 
-echo "#{timezone}" > /etc/timezone && \
-  dpkg-reconfigure --frontend noninteractive tzdata
+echo "#{timezone}" > /etc/timezone
+dpkg-reconfigure -f noninteractive tzdata
 
 echo "Installing erlang vendor repo"
 apt-add-repository -y \
