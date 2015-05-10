@@ -18,7 +18,7 @@ defmodule GetAJobEx.JobController do
       redirect conn, to: job_path(conn, :show, id)
     else
       conn
-      |> put_status(400)
+      |> put_status(:bad_request)
       |> text "invalid"
     end
   end
