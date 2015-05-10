@@ -5,4 +5,8 @@ defmodule GetAJobEx.JobView do
     %{data: jobs}
   end
 
+  def render("show.json", %{job: job}) do
+    %{job: job}
+  end
+
 end

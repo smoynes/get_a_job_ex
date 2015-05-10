@@ -23,4 +23,15 @@ defmodule GetAJobEx.JobController do
     end
   end
 
+  def show(conn, %{"id" => id}) do
+    job = Repo.get Job, id
+    if job do
+      render conn, job: job
+    else
+      conn
+      |> put_status(:not_found)
+      |> text "not found"
+    end
+  end
+
 end
