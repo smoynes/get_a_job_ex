@@ -57,7 +57,11 @@ To run the application in development mode.
     $ mix do ecto.create, ecto.migrate
     ```
 
-1. Start Phoenix endpoint with `mix phoenix.server`
+1. Start Phoenix endpoint:
+
+   ```console
+    $ mix phoenix.server
+    ```
 
 Now you can visit `http://localhost:4000` from your browser. The port
 is also forwarded to the vagrant VM.
