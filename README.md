@@ -65,3 +65,18 @@ is also forwarded to the vagrant VM.
 Examples
 --------
 
+```console
+$ curl -L --include \
+  --data 'job[status]=in_progress' \
+  --data 'job[number_one]=5' \
+  --data 'job[number_two]=a' \
+  http://127.0.0.1:4000/api/jobs
+```
+
+```console
+$ curl --include http://127.0.0.1:4000/api/jobs/1
+```
+
+```
+$ curl http://127.0.0.1:4000/api/jobs
+```
