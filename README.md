@@ -73,7 +73,7 @@ Examples
 $ curl -L --include \
   --data 'job[status]=in_progress' \
   --data 'job[number_one]=5' \
-  --data 'job[number_two]=a' \
+  --data 'job[number_two]=2' \
   http://127.0.0.1:4000/api/jobs
 ```
 
