@@ -31,13 +31,13 @@ apt-get install -q -y esl-erlang erlang-manpages elixir
 echo "Installing postgres"
 apt-get install -q -y postgresql-9.3 postgresql-client-9.3
 
-echo "Installing nodejs"
-apt-get install -q -y nodejs
-
 sudo -u postgres psql -c \
   "CREATE ROLE get_a_job WITH CREATEROLE CREATEDB LOGIN \
    PASSWORD 'password';" || true
 
 ### TODO: set PGUSER and PGHOSTNAME env vars
+
+echo "Installing nodejs"
+apt-get install -q -y nodejs
 
 echo "Provisioning completed: ok"
