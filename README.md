@@ -4,7 +4,7 @@ GetAJob in Elixir
 An Elixir implementation of the "Get a Job" service from *Designing
 Hypermedia APIs* by Steve Klabnik.
 
-The application uses the [Phoenix Farmework](https://phoenixframework.org) to
+The application uses the [Phoenix Framework](https://phoenixframework.org) to
 implement the API.
 
 This is a work in progress and not complete.
