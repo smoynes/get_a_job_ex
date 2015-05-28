@@ -21,6 +21,7 @@ defmodule GetAJobEx.Router do
   scope "/api", GetAJobEx do
     pipe_through :api
 
+    get "/", JobController, :api
     resources "/jobs", JobController
   end
 end

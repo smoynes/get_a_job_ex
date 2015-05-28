@@ -5,6 +5,10 @@ defmodule GetAJobEx.JobController do
 
   plug :action
 
+  def api(conn, _params) do
+    render conn, :api
+  end
+  
   def index(conn, _params) do
     jobs = Repo.all(Job)
     render conn, jobs: jobs
