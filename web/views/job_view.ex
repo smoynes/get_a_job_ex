@@ -7,12 +7,19 @@ defmodule GetAJobEx.JobView do
     job(conn)
   end
 
-  def render("index.json", %{jobs: jobs}) do
+  def render("index.json", %{jobs: jobs, conn: conn}) do
+    jobs = for job <- jobs, do: job(conn, job)
     %{data: jobs}
   end
 
-  def render("show.json", %{job: job}) do
-    %{job: job}
+  def render("show.json", %{job: job, conn: conn}) do
+    %{job: job(conn, job)}
+  end
+
+  defp job(conn, job) do
+    job
+    |> Map.take([:number_one, :number_two, :status])
+    |> Map.put(:links, links(conn, job))
   end
 
   defp job(conn) do
@@ -23,7 +30,14 @@ defmodule GetAJobEx.JobView do
   end
 
   defp links(conn) do
-    %{href: job_path(conn, :index),
-      rel: "index"}
+    [%{href: job_path(conn, :index),
+       rel: "index"}]
+  end
+
+  defp links(conn, job) do
+    [%{href: job_path(conn, :index),
+       rel: "index"},
+     %{href: job_path(conn, :show, job),
+       rel: "self"}]
   end
 end
