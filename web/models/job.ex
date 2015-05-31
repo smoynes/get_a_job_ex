@@ -5,12 +5,13 @@ defmodule GetAJobEx.Job do
     field :number_one, :integer
     field :number_two, :integer
     field :status, :string
+    field :answer, :integer
 
     timestamps
   end
 
   @required_fields ~w(number_one number_two status)
-  @optional_fields ~w()
+  @optional_fields ~w(answer)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
