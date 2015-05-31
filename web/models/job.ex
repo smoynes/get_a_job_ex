@@ -1,5 +1,6 @@
 defmodule GetAJobEx.Job do
   use GetAJobEx.Web, :model
+  import Ecto.Changeset
 
   schema "jobs" do
     field :number_one, :integer
@@ -23,4 +24,11 @@ defmodule GetAJobEx.Job do
     model
     |> cast(params, @required_fields, @optional_fields)
   end
+
+  def changeset(model, :answer, answer) do
+    model
+    |> changeset(%{status: "finished"})
+    |> put_change(:answer, answer)
+  end
+
 end

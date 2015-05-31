@@ -8,7 +8,7 @@ defmodule GetAJobEx.JobController do
   def api(conn, _params) do
     render conn, :api
   end
-  
+
   def index(conn, _params) do
     jobs = Repo.all(Job)
     render conn, jobs: jobs
@@ -18,8 +18,13 @@ defmodule GetAJobEx.JobController do
     changeset = Job.changeset(%Job{}, job_params)
 
     if changeset.valid? do
-      id = Repo.insert(changeset)
-      redirect conn, to: job_path(conn, :show, id)
+      job = Repo.insert(changeset)
+      Task.async(fn ->
+        answer = job.number_one + job.number_two
+        changeset = Job.changeset(job, :answer, answer)
+        Repo.update(changeset)
+      end)
+      redirect conn, to: job_path(conn, :show, job)
     else
       conn
       |> put_status(:bad_request)
