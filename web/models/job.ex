@@ -9,7 +9,7 @@ defmodule GetAJobEx.Job do
     timestamps
   end
 
-  @required_fields ~w(number_one number_two)
+  @required_fields ~w(number_one number_two status)
   @optional_fields ~w()
 
   @doc """
