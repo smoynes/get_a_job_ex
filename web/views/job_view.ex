@@ -16,6 +16,12 @@ defmodule GetAJobEx.JobView do
     %{job: job(conn, job)}
   end
 
+  defp job(conn, job = %{status: "finished"}) do
+    job
+    |> Map.take([:number_one, :number_two, :status, :answer])
+    |> Map.put(:links, links(conn, job))
+  end
+
   defp job(conn, job) do
     job
     |> Map.take([:number_one, :number_two, :status])
