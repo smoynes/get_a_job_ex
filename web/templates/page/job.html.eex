@@ -1,0 +1,8 @@
+<tr scope="row">
+  <td><%= @job.id %></td>
+  <td><%= @job.status %></td>
+  <td><%= @job.number_one %></td>
+  <td><%= @job.number_two %></td>
+  <td><%= @job.answer%></td>
+</tr>
+   

@@ -1,9 +1,12 @@
 defmodule GetAJobEx.PageController do
   use GetAJobEx.Web, :controller
+  alias GetAJobEx.Job
 
   plug :action
 
   def index(conn, _params) do
-    render conn, "index.html"
+    jobs = Repo.all(Job)
+    render conn, "index.html", jobs: jobs
   end
+
 end
