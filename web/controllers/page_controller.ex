@@ -5,7 +5,8 @@ defmodule GetAJobEx.PageController do
   plug :action
 
   def index(conn, _params) do
-    jobs = Repo.all(Job)
+    query = from j in Job, order_by: [desc: j.id]
+    jobs = Repo.all(query)
     render conn, "index.html", jobs: jobs
   end
 
